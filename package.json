@@ -1,0 +1,27 @@
+{
+  "name": "day-scheduler",
+  "version": "0.0.1",
+  "description": "Daily event/reminder schedule manager.",
+  "private": true,
+  "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/SnapperGee/day-scheduler.git"
+  },
+  "scripts": {
+    "build": "cp -r ./src/main/css ./src/main/js ./build & cp src/main/html/index.html build",
+    "prebuild": "rm -rf build && mkdir build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "schedule",
+    "planner",
+    "productivity",
+    "agenda"
+  ],
+  "author": "Graham Auger",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jquery": "^3.5.17"
+  }
+}
