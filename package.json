@@ -23,5 +23,8 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jquery": "^3.5.17"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.9"
   }
 }
