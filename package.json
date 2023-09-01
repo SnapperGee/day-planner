@@ -28,6 +28,7 @@
     "webpack-cli": "^5.1.4"
   },
   "dependencies": {
+    "bootstrap": "^5.3.1",
     "dayjs": "^1.11.9",
     "jquery": "^3.7.1"
   }
