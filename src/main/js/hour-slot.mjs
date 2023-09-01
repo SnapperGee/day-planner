@@ -1,3 +1,5 @@
+import $ from "jquery";
+
 const hourSlotRowClasses = Object.freeze(["row", "time-block", "past"]);
 const timeOfDayColumnClasses = Object.freeze(["col-2", "col-md-1", "hour", "text-center", "py-3"]);
 const textAreaClasses = Object.freeze(["col-8", "col-md-10", "description"]);

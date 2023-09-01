@@ -1,4 +1,9 @@
 import { HourSlot } from "./hour-slot.mjs";
+// import { Dayjs } from "dayjs";
+
+// const now = new Dayjs();
+
+// console.log(now.hour());
 
 const hours = Object.freeze([0,1,2,3,4,5,6,7,8]);
 
