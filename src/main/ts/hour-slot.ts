@@ -55,11 +55,6 @@ export class HourSlot
                                          .attr("aria-label", "save")
                                          .append($saveButtonIcon);
 
-        this.#$saveButton.on("click", () =>
-        {
-            localStorage.setItem(this.#id, this.#$textArea.val()?.toString() ?? "undefined");
-        });
-
         this.#$row = $("<div>").addClass(Array.from(hourSlotRowClasses))
                                .prop("id", this.#id)
                                .append(this.#$timeOfDay, $textAreaLabel, this.#$textArea, this.#$saveButton);
