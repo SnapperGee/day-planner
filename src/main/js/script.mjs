@@ -4,14 +4,6 @@ const hours = Object.freeze([0,1,2,3,4,5,6,7,8]);
 
 const hourSlots = Object.freeze(hours.map(hour => new HourSlot(hour)));
 
-hourSlots.forEach(hourSlot =>
-{
-    hourSlot.$saveButton.on("click", () =>
-    {
-        localStorage.setItem(hourSlot.id, hourSlot.$textArea.val()?.toString() ?? "undefined");
-    });
-});
-
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
