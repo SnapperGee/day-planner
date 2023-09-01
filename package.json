@@ -1,12 +1,12 @@
 {
-  "name": "day-scheduler",
+  "name": "day-planner",
   "version": "0.0.1",
   "description": "Daily event/reminder schedule manager.",
   "private": true,
   "type": "module",
   "repository": {
     "type": "git",
-    "url": "https://github.com/SnapperGee/day-scheduler.git"
+    "url": "https://github.com/SnapperGee/day-planner.git"
   },
   "scripts": {
     "build": "cp -r ./src/main/css ./src/main/js ./build & cp src/main/html/index.html build",
