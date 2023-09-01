@@ -9,8 +9,8 @@
     "url": "https://github.com/SnapperGee/day-planner.git"
   },
   "scripts": {
-    "build": "cp -r ./src/main/css ./build & cp src/main/html/index.html build",
-    "prebuild": "rm -rf build && npm run ts",
+    "build": "cp -r ./src/main/css ./src/main/js ./build & cp src/main/html/index.html ./build",
+    "prebuild": "rm -rf build && mkdir ./build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "ts": "tsc -p ./tsconfig.json"
   },
@@ -24,12 +24,11 @@
   "license": "ISC",
   "devDependencies": {
     "@types/jquery": "^3.5.17",
-    "typescript": "^5.2.2",
-    "webpack": "^5.88.2"
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
   },
   "dependencies": {
     "dayjs": "^1.11.9",
-    "jquery": "^3.7.1",
-    "tslib": "^2.6.2"
+    "jquery": "^3.7.1"
   }
 }

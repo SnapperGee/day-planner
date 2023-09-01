@@ -1,11 +1,11 @@
-const hourSlotRowClasses: readonly string[] = Object.freeze(["row", "time-block", "past"]);
-const timeOfDayColumnClasses: readonly string[] = Object.freeze(["col-2", "col-md-1", "hour", "text-center", "py-3"]);
-const textAreaClasses: readonly string[] = Object.freeze(["col-8", "col-md-10", "description"]);
-const saveButtonIconClasses: readonly string[] = Object.freeze(["fas", "fa-save"]);
-const saveButtonClasses: readonly string[] = Object.freeze(["btn", "saveBtn", "col-2", "col-md-1"]);
+const hourSlotRowClasses = Object.freeze(["row", "time-block", "past"]);
+const timeOfDayColumnClasses = Object.freeze(["col-2", "col-md-1", "hour", "text-center", "py-3"]);
+const textAreaClasses = Object.freeze(["col-8", "col-md-10", "description"]);
+const saveButtonIconClasses = Object.freeze(["fas", "fa-save"]);
+const saveButtonClasses = Object.freeze(["btn", "saveBtn", "col-2", "col-md-1"]);
 
-const hourToTimeOfDay = (aNum: number): number => (aNum + 9) % 12 || 12;
-const hourToTimeOfDayString = (aNum: number): string => `${hourToTimeOfDay(aNum)}${aNum < 3 ? "AM" : "PM"}`;
+const hourToTimeOfDay = (aNum) => (aNum + 9) % 12 || 12;
+const hourToTimeOfDayString = (aNum) => `${hourToTimeOfDay(aNum)}${aNum < 3 ? "AM" : "PM"}`;
 
 export const temporalTimeValues = Object.freeze(["past", "present", "future"]);
 
@@ -16,14 +16,14 @@ export const temporalTime = Object.freeze(
 
 export class HourSlot
 {
-    readonly #hour: number;
-    readonly #id: string;
-    readonly #$row: JQuery<HTMLElement>;
-    readonly #$timeOfDay: JQuery<HTMLElement>;
-    readonly #$textArea: JQuery<HTMLElement>;
-    readonly #$saveButton: JQuery<HTMLElement>;
+    #hour;
+    #id;
+    #$row;
+    #$timeOfDay;
+    #$textArea;
+    #$saveButton;
 
-    constructor(hourNum: number)
+    constructor(hourNum)
     {
         if (typeof hourNum !== "number")
         {
@@ -55,19 +55,24 @@ export class HourSlot
                                          .attr("aria-label", "save")
                                          .append($saveButtonIcon);
 
+        this.#$saveButton.on("click", () =>
+        {
+            localStorage.setItem(this.#id, this.#$textArea.val()?.toString() ?? "undefined");
+        });
+
         this.#$row = $("<div>").addClass(Array.from(hourSlotRowClasses))
                                .prop("id", this.#id)
                                .append(this.#$timeOfDay, $textAreaLabel, this.#$textArea, this.#$saveButton);
     }
 
-    get hour(): number { return this.#hour; }
-    get id(): string { return this.#id; }
-    get $row(): JQuery<HTMLElement> { return this.#$row; }
-    get $timeOfDay(): JQuery<HTMLElement> { return this.#$timeOfDay; }
-    get $textArea(): JQuery<HTMLElement> { return this.#$textArea; }
-    get $saveButton(): JQuery<HTMLElement> { return this.#$saveButton; }
+    get hour() { return this.#hour; }
+    get id() { return this.#id; }
+    get $row() { return this.#$row; }
+    get $timeOfDay() { return this.#$timeOfDay; }
+    get $textArea() { return this.#$textArea; }
+    get $saveButton() { return this.#$saveButton; }
 
-    public setTemporalTime(temporalTime: string | number): HourSlot
+    setTemporalTime(temporalTime)
     {
         if (typeof temporalTime !== "string" || typeof temporalTime !== "number")
         {
