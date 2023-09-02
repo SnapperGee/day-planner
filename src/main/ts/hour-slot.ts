@@ -11,7 +11,7 @@ const hourToTimeOfDayString = (aNum: number): string => `${hourToTimeOfDay(aNum)
 
 export const temporalTimeValues: readonly string[] = Object.freeze(["past", "present", "future"]);
 
-export const temporalTime /*: {readonly [tempTime in typeof temporalTimeValues[number] as Uppercase<tempTimeUpper>]: string}*/ = Object.freeze(
+export const temporalTime: {readonly [tempTime in typeof temporalTimeValues[number] as Uppercase<tempTime>]: tempTime} = Object.freeze(
     Object.fromEntries(
         Array.from(temporalTimeValues.values()).map(tempTime => [tempTime.toUpperCase(), tempTime])
 ));
