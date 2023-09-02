@@ -16,9 +16,6 @@ const hourSlots = Object.freeze(hours.map(hour => new HourSlot(hour).setTemporal
                                                                                       : currentHour < hour ? temporalTime.PAST
                                                                                       : temporalTime.FUTURE )));
 
-// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
-// the code isn't run until the browser has finished rendering all the elements
-// in the html.
 $(function () {
 
     // Rend hour slots to DOM
