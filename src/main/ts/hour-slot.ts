@@ -25,7 +25,7 @@ export class HourSlot
     readonly #$textArea: JQuery<HTMLElement>;
     readonly #$saveButton: JQuery<HTMLElement>;
 
-    constructor(hourNum: NonNullable<number>)
+    public constructor(hourNum: NonNullable<number>)
     {
         if (typeof hourNum !== "number")
         {
