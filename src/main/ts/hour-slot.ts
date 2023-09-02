@@ -98,3 +98,5 @@ export class HourSlot
         return this;
     }
 }
+
+export default HourSlot;
