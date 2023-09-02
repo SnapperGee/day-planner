@@ -1,11 +1,14 @@
 import { HourSlot } from "./hour-slot";
 import dayjs from "dayjs";
+import utc from "dayjs/plugin/utc";
+import tz from "dayjs/plugin/timezone";
 
-const now = dayjs();
+dayjs.extend(utc);
+dayjs.extend(tz);
 
-console.log(now.toString());
+const currentHour = parseFloat(dayjs().utc().tz().format("H"));
 
-const hours = Object.freeze([0,1,2,3,4,5,6,7,8]);
+const hours = Object.freeze([9,10,11,12,13,14,15,16,17]);
 
 const hourSlots = Object.freeze(hours.map(hour => new HourSlot(hour)));
 

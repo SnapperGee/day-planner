@@ -6,8 +6,8 @@ const textAreaClasses = Object.freeze(["col-8", "col-md-10", "description"]);
 const saveButtonIconClasses = Object.freeze(["fas", "fa-save"]);
 const saveButtonClasses = Object.freeze(["btn", "saveBtn", "col-2", "col-md-1"]);
 
-const hourToTimeOfDay = (aNum: number): number => (aNum + 9) % 12 || 12;
-const hourToTimeOfDayString = (aNum: number): string => `${hourToTimeOfDay(aNum)}${aNum < 3 ? "AM" : "PM"}`;
+const hourToTimeOfDay = (aNum: number): number => aNum === 0 || aNum === 12 ? 12 : aNum % 12;
+const hourToTimeOfDayString = (aNum: number): string => `${hourToTimeOfDay(aNum)}${aNum < 12 ? "AM" : "PM"}`;
 
 export const temporalTimeValues: readonly string[] = Object.freeze(["past", "present", "future"]);
 
@@ -32,9 +32,9 @@ export class HourSlot
             throw new TypeError(`${new.target.name}: non number hourNum: ${hourNum === null ? "null" : hourNum}`);
         }
 
-        if (hourNum < 0 || hourNum > 8)
+        if (hourNum < 0 || hourNum > 23)
         {
-            throw new RangeError(`${new.target.name}: hourNum not within valid range of 0-8: ${hourNum}`);
+            throw new RangeError(`${new.target.name}: hourNum not within valid range of 0-23: ${hourNum}`);
         }
 
         this.#hour = hourNum;
