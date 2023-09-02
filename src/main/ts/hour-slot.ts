@@ -76,19 +76,14 @@ export class HourSlot
 
     public setTemporalTime(temporalTime: NonNullable<string | number>): HourSlot
     {
-        if (typeof temporalTime !== "string" || typeof temporalTime !== "number")
+        if (typeof temporalTime !== "string" && typeof temporalTime !== "number")
         {
             throw new TypeError(`${this.constructor.name}: ${arguments.callee.name}: non-string and non-number argument: ${temporalTime === null ? "null" : temporalTime}`);
         }
 
         if (typeof temporalTime === "number")
         {
-            if (temporalTime < 0 || temporalTime > 2)
-            {
-                throw new RangeError(`${this.constructor.name}: ${arguments.callee.name}: number not within valid rang of 0-3: ${temporalTime}`);
-            }
-
-            this.#$row.removeClass(Array.from(temporalTimeValues)).addClass(temporalTimeValues[temporalTime]);
+            this.#$row.removeClass(Array.from(temporalTimeValues)).addClass(temporalTimeValues[temporalTime < 0 ? 0 : temporalTime > 0 ? 2 : 0]);
         }
         else
         {

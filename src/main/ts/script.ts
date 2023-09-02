@@ -1,4 +1,4 @@
-import { HourSlot } from "./hour-slot";
+import { HourSlot, temporalTime } from "./hour-slot";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import tz from "dayjs/plugin/timezone";
@@ -10,7 +10,9 @@ const currentHour = parseFloat(dayjs().utc().tz().format("H"));
 
 const hours = Object.freeze([9,10,11,12,13,14,15,16,17]);
 
-const hourSlots = Object.freeze(hours.map(hour => new HourSlot(hour)));
+const hourSlots = Object.freeze(hours.map(hour => new HourSlot(hour).setTemporalTime(   hour > currentHour ? temporalTime.FUTURE
+                                                                                      : currentHour < hour ? temporalTime.PAST
+                                                                                      : temporalTime.FUTURE)));
 
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
