@@ -16,7 +16,7 @@ export const temporalTime: {readonly [tempTime in typeof temporalTimeValues[numb
         Array.from(temporalTimeValues.values()).map(tempTime => [tempTime.toUpperCase(), tempTime])
 ));
 
-export class HourSlot
+export class DayHourSlot
 {
     readonly #hour: number;
     readonly #id: string;
@@ -74,7 +74,7 @@ export class HourSlot
     public get $textArea(): JQuery<HTMLElement> { return this.#$textArea; }
     public get $saveButton(): JQuery<HTMLElement> { return this.#$saveButton; }
 
-    public setTemporalTime(temporalTime: NonNullable<string | number>): HourSlot
+    public setTemporalTime(temporalTime: NonNullable<string | number>): DayHourSlot
     {
         if (typeof temporalTime !== "string" && typeof temporalTime !== "number")
         {
@@ -99,4 +99,4 @@ export class HourSlot
     }
 }
 
-export default HourSlot;
+export default DayHourSlot;

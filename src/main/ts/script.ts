@@ -1,5 +1,5 @@
 import { createHoursArray } from "./create-hours-array";
-import { HourSlot, temporalTime } from "./hour-slot";
+import { DayHourSlot, temporalTime } from "./day-hour-slot";
 import dayjs from "dayjs";
 import utc from "dayjs/plugin/utc";
 import tz from "dayjs/plugin/timezone";
@@ -22,9 +22,9 @@ const currentHour = parseFloat(now.format("H"));
 const hours = Object.freeze(createHoursArray([9,10,11,12,13,14,15,16,17]));
 
 // Create hour slots and set to past, present, or future colors
-const hourSlots = Object.freeze(hours.map(hour => new HourSlot(hour).setTemporalTime(   hour > currentHour ? temporalTime.FUTURE
-                                                                                      : currentHour < hour ? temporalTime.PAST
-                                                                                      : temporalTime.FUTURE )));
+const hourSlots = Object.freeze(hours.map(hour => new DayHourSlot(hour).setTemporalTime(   hour > currentHour ? temporalTime.FUTURE
+                                                                                         : currentHour < hour ? temporalTime.PAST
+                                                                                         : temporalTime.FUTURE )));
 
 // Retrieve any saved day hour slot text area inputs
 const localStorageMap: ReadonlyMap<string, string> = Object.freeze(hourSlots.reduce((map, hourSlot) =>
