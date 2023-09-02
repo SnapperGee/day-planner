@@ -2,7 +2,6 @@ const resolvePath = require('path').resolve;
 const webpack = require('webpack');
 
 module.exports = {
-  // entry: './src/main/js/script.mjs',
   entry: './src/main/ts/script.ts',
   module: {
     rules: [
