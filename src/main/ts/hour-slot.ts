@@ -6,26 +6,26 @@ const textAreaClasses = Object.freeze(["col-8", "col-md-10", "description"]);
 const saveButtonIconClasses = Object.freeze(["fas", "fa-save"]);
 const saveButtonClasses = Object.freeze(["btn", "saveBtn", "col-2", "col-md-1"]);
 
-const hourToTimeOfDay = (aNum) => (aNum + 9) % 12 || 12;
-const hourToTimeOfDayString = (aNum) => `${hourToTimeOfDay(aNum)}${aNum < 3 ? "AM" : "PM"}`;
+const hourToTimeOfDay = (aNum: number): number => (aNum + 9) % 12 || 12;
+const hourToTimeOfDayString = (aNum: number): string => `${hourToTimeOfDay(aNum)}${aNum < 3 ? "AM" : "PM"}`;
 
-export const temporalTimeValues = Object.freeze(["past", "present", "future"]);
+export const temporalTimeValues: readonly string[] = Object.freeze(["past", "present", "future"]);
 
-export const temporalTime = Object.freeze(
+export const temporalTime /*: {readonly [tempTime in typeof temporalTimeValues[number] as Uppercase<tempTimeUpper>]: string}*/ = Object.freeze(
     Object.fromEntries(
         Array.from(temporalTimeValues.values()).map(tempTime => [tempTime.toUpperCase(), tempTime])
 ));
 
 export class HourSlot
 {
-    #hour;
-    #id;
-    #$row;
-    #$timeOfDay;
-    #$textArea;
-    #$saveButton;
+    readonly #hour: number;
+    readonly #id: string;
+    readonly #$row: JQuery<HTMLElement>;
+    readonly #$timeOfDay: JQuery<HTMLElement>;
+    readonly #$textArea: JQuery<HTMLElement>;
+    readonly #$saveButton: JQuery<HTMLElement>;
 
-    constructor(hourNum)
+    constructor(hourNum: NonNullable<number>)
     {
         if (typeof hourNum !== "number")
         {
@@ -67,14 +67,14 @@ export class HourSlot
                                .append(this.#$timeOfDay, $textAreaLabel, this.#$textArea, this.#$saveButton);
     }
 
-    get hour() { return this.#hour; }
-    get id() { return this.#id; }
-    get $row() { return this.#$row; }
-    get $timeOfDay() { return this.#$timeOfDay; }
-    get $textArea() { return this.#$textArea; }
-    get $saveButton() { return this.#$saveButton; }
+    public get hour(): number { return this.#hour; }
+    public get id(): string { return this.#id; }
+    public get $row(): JQuery<HTMLElement> { return this.#$row; }
+    public get $timeOfDay(): JQuery<HTMLElement> { return this.#$timeOfDay; }
+    public get $textArea(): JQuery<HTMLElement> { return this.#$textArea; }
+    public get $saveButton(): JQuery<HTMLElement> { return this.#$saveButton; }
 
-    setTemporalTime(temporalTime)
+    public setTemporalTime(temporalTime: NonNullable<string | number>): HourSlot
     {
         if (typeof temporalTime !== "string" || typeof temporalTime !== "number")
         {

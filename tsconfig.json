@@ -1,0 +1,20 @@
+{
+    "include": ["./src/main/ts/**/*.ts"],
+    "compilerOptions":
+    {
+      "declaration": false,
+      "esModuleInterop": true,
+      "forceConsistentCasingInFileNames": true,
+      "lib": ["es2021", "DOM"],
+      "module": "es2020",
+      "moduleResolution": "node",
+      "noEmitOnError": true,
+      "noImplicitOverride": true,
+      "outDir": "./build/js",
+      "preserveConstEnums": false,
+      "rootDir": "./src/main/ts",
+      "sourceMap": false,
+      "strict": true,
+      "target": "es2021"
+    }
+  }

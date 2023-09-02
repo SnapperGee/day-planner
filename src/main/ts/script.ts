@@ -1,4 +1,4 @@
-import { HourSlot } from "./hour-slot.mjs";
+import { HourSlot } from "./hour-slot";
 import dayjs from "dayjs";
 
 const now = dayjs();
