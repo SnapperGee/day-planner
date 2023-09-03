@@ -37,6 +37,11 @@ export class DayHourSlot
             throw new RangeError(`${new.target.name}: hourNum not within valid range of 0-23: ${hourNum}`);
         }
 
+        if ( ! Number.isInteger(hourNum))
+        {
+            throw new TypeError(`${new.target.name}: non integer hourNum: ${hourNum}`);
+        }
+
         this.#hour = hourNum;
         this.#id = `hour-${this.#hour}`;
 
