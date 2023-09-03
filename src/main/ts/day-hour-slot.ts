@@ -48,13 +48,13 @@ export class DayHourSlot
         const $textAreaLabel = $("<label>").addClass("visually-hidden").attr("for", textAreaId).text(`${this.#id} input`);
 
         this.#$textArea = $("<textarea>").addClass(Array.from(textAreaClasses))
-                                         .attr({id: textAreaId, rows: 3});
+                                         .prop({id: textAreaId, rows: 3});
 
         const $saveButtonIcon = $("<i>").addClass(Array.from(saveButtonIconClasses))
-                                        .attr("aria-hidden", "true");
+                                        .prop("aria-hidden", "true");
 
         this.#$saveButton = $("<button>").addClass(Array.from(saveButtonClasses))
-                                         .attr("aria-label", "save")
+                                         .prop("aria-label", "save")
                                          .append($saveButtonIcon);
 
         this.#$saveButton.on("click", () =>
