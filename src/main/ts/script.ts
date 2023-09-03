@@ -23,9 +23,20 @@ const hours = Object.freeze(createHoursArray([9,10,11,12,13,14,15,16,17]));
 
 // Create hour slots and set to past, present, or future colors
 const dayHourSlots: readonly DayHourSlot[] = Object.freeze(hours.map(dayHour =>
-    new DayHourSlot(dayHour).setTemporalTime(   dayHour > currentHour ? temporalTime.FUTURE
-                                              : currentHour < dayHour ? temporalTime.PAST
-                                              : temporalTime.FUTURE )));
+    {
+        if (dayHour > currentHour)
+        {
+            return new DayHourSlot(dayHour).setTemporalTime(temporalTime.FUTURE)
+        }
+        else if (dayHour < currentHour)
+        {
+            return new DayHourSlot(dayHour).setTemporalTime(temporalTime.PAST)
+        }
+        else
+        {
+            return new DayHourSlot(dayHour).setTemporalTime(temporalTime.PRESENT)
+        }
+    }));
 
 // Retrieve any saved day hour slot text area inputs
 const localStorageMap: ReadonlyMap<string, string> = Object.freeze(dayHourSlots.reduce((map, hourSlot) =>
