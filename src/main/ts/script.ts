@@ -22,12 +22,13 @@ const currentHour = parseFloat(now.format("H"));
 const hours = Object.freeze(createHoursArray([9,10,11,12,13,14,15,16,17]));
 
 // Create hour slots and set to past, present, or future colors
-const hourSlots = Object.freeze(hours.map(hour => new DayHourSlot(hour).setTemporalTime(   hour > currentHour ? temporalTime.FUTURE
-                                                                                         : currentHour < hour ? temporalTime.PAST
-                                                                                         : temporalTime.FUTURE )));
+const dayHourSlots: readonly DayHourSlot[] = Object.freeze(hours.map(dayHour =>
+    new DayHourSlot(dayHour).setTemporalTime(   dayHour > currentHour ? temporalTime.FUTURE
+                                              : currentHour < dayHour ? temporalTime.PAST
+                                              : temporalTime.FUTURE )));
 
 // Retrieve any saved day hour slot text area inputs
-const localStorageMap: ReadonlyMap<string, string> = Object.freeze(hourSlots.reduce((map, hourSlot) =>
+const localStorageMap: ReadonlyMap<string, string> = Object.freeze(dayHourSlots.reduce((map, hourSlot) =>
 {
     const retrievedVal = localStorage.getItem(hourSlot.id);
 
@@ -41,7 +42,7 @@ const localStorageMap: ReadonlyMap<string, string> = Object.freeze(hourSlots.red
  new Map()));
 
  // Fill text area input of day hour slot with saved data
- hourSlots.filter(hourSlot => localStorageMap.has(hourSlot.id)).forEach(hourSlot => hourSlot.$textArea.val(localStorageMap.get(hourSlot.id)!))
+ dayHourSlots.filter(hourSlot => localStorageMap.has(hourSlot.id)).forEach(hourSlot => hourSlot.$textArea.val(localStorageMap.get(hourSlot.id)!))
 
 $(function () {
 
@@ -49,5 +50,5 @@ $(function () {
     $("#currentDay").text(currentDayString);
 
     // Rend hour slots to DOM
-    hourSlots.forEach(hourSlot => hourSlot.$row.appendTo("body > div"));
+    dayHourSlots.forEach(hourSlot => hourSlot.$row.appendTo("body > div"));
 });
