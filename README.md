@@ -7,10 +7,18 @@ Daily event/reminder schedule manager.
 This web app provides 24 one hour slots where notes can be saved associated with a specific time of day. By default it
 shows the hours of 9am to 5pm.
 
-## [`DayHourSlot`][day hour slot class]
+## [`DayHourSlot`][day hour slot module]
 
-The `DayHourSlot` class contains most of the functionality of this web app. It creates the objects that create each row
-for each hour of the day.
+The `DayHourSlot` class creates an object used to create the rows of each hour of the day rendered to the viewport. It
+does this by combining its JQuery `HTMLElement` properties to compose each row. Each row consists of 3 components:
+
+1. Time of day
+1. Text area
+1. Save button
+
+Below shows 3 rows and the 3 separate components that make up each row:
+
+![Day planner rows][day planner rows]
 
 ### `DayHourSlot` constructor
 
@@ -19,8 +27,14 @@ day (11pm). Providing a value less than 0 or greater than 23, a non-integer valu
 to be thrown.
 
 ```typescript
+// Creates a day hour slot for the first hour of the day, 12am
+const midnight = new DayHourSlot(0);
+
 // Creates a day hour slot for 4pm
 const fourPM = new DayHourSlot(16);
+
+// Creates a day hour slot for the last hour of the day, 11pm
+const midnight = new DayHourSlot(23);
 
 // All the following statements result in an error to be thrown:
 const noUndefined = new DayHourSlot(undefined);
@@ -36,13 +50,23 @@ const noNonInteger = new DayHourSlot(7.77);
 
 - `hour`
 
-Their `hour` property is the hour slot of a 24 hour day they represent. For instance, midnight/12am, is the hour `0` and
+The `hour` property is the hour slot of a 24 hour day they represent. For instance, midnight/12am, is the hour `0` and
 4pm is the hour `16`.
 
 - `id`
 
-Their `id` property is the value used as their id attribute/property in the DOM. This consists a string that is their
+The `id` property is the value used as their id attribute/property in the DOM. This consists a string that is their
 `hour` prepended with `"hour-"`. So the `id` for 12am/midnight would be the string `"hour-0"` and the `id` for 4pm would
 be `"hour-16"`.
 
-[day hour slot class]: ./src/main/ts/day-hour-slot.ts
+- `$row`
+
+The `$row` property contains the JQuery `HTMLElement` object that is the root parent bootstrap row that encapsulates all
+the other JQuery `HTMLElement`s to be rendered to the viewport.
+
+- `$timeOfDay`
+
+The `$timeOfDay` property contains the 12 hour based time
+
+[day hour slot module]: ./src/main/ts/day-hour-slot.ts "day-hour-slot module"
+[day planner rows]: ./docs/day_planner_rows.png "Day planner rows breakdown"
