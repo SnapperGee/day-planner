@@ -20,7 +20,7 @@ Below shows 3 rows and the 3 separate components that make up each row:
 
 ![Day planner rows][day planner rows]
 
-When the save button is clicked, the contents of the text are input are saved to local storage (overwriting any
+When the save button is clicked, the contents of the text area input are saved to local storage (overwriting any
 previously saved data if there is any) using the hour row ID as the key for the saved data.
 
 [day hour slot module]: ./src/main/ts/day-hour-slot.ts "day-hour-slot module"
