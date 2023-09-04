@@ -9,12 +9,10 @@
     "url": "https://github.com/SnapperGee/day-planner.git"
   },
   "scripts": {
-    "build": "NODE_ENV=development webpack --config ./config/dev.webpack.config.mjs",
-    "build-dist": "NODE_ENV=production webpack --config ./config/dist.webpack.config.mjs",
-    "prebuild": "rm -rf build && mkdir ./build",
-    "sass": "sass --no-source-map ./src/main/scss:./build/css",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "ts": "tsc -p ./tsconfig.json"
+    "build": "NODE_ENV=development webpack --config ./webpack.config.mjs",
+    "build-dist": "NODE_ENV=production webpack --env production --config ./webpack.config.mjs",
+    "prebuild": "rm -rf build",
+    "prebuild-dist": "rm -rf build"
   },
   "keywords": [
     "schedule",
