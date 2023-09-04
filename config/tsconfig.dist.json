@@ -3,7 +3,6 @@
     "compilerOptions":
     {
       "removeComments": true,
-      "skipLibCheck": false,
-      "sourceMap": true
+      "skipLibCheck": false
     }
 }

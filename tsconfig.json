@@ -12,6 +12,7 @@
       "noEmitOnError": true,
       "noImplicitOverride": true,
       "rootDir": "./src/main/ts",
+      "sourceMap": true,
       "strict": true,
       "target": "es2021"
     }
