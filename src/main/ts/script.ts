@@ -47,5 +47,5 @@ $(function () {
     $("#currentDay").text(currentDayString);
 
     // Rend hour slots to DOM
-    dayHourSlots.forEach(hourSlot => hourSlot.$row.appendTo("body > div"));
+    dayHourSlots.forEach(hourSlot => hourSlot.$row.appendTo("#dayHourRows"));
 });
