@@ -12,7 +12,12 @@ export default function(env, argv) {
         rules: [
             {
                 test: /\.tsx?$/,
-                use: 'ts-loader',
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: { configFile: resolvePath('.', 'config', env.production ? 'tsconfig.dist.json' : 'tsconfig.dev.json') }
+                    }
+                ],
                 exclude: /node_modules/,
             },
             {
