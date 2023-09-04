@@ -9,8 +9,8 @@
     "url": "https://github.com/SnapperGee/day-planner.git"
   },
   "scripts": {
-    "build": "NODE_ENV=development webpack --config ./webpack.config.mjs",
-    "build-dist": "NODE_ENV=production webpack --env production --config ./webpack.config.mjs",
+    "build": "webpack --config ./webpack.config.mjs",
+    "build-dist": "webpack --env production --config ./webpack.config.mjs",
     "prebuild": "rm -rf build",
     "prebuild-dist": "rm -rf build"
   },
