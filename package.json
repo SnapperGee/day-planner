@@ -9,8 +9,8 @@
     "url": "https://github.com/SnapperGee/day-planner.git"
   },
   "scripts": {
-    "build": "npm run sass && cp src/main/html/index.html ./build && NODE_ENV=development webpack",
-    "build-dist": "npm run sass && cp src/main/html/index.html ./build && NODE_ENV=production webpack",
+    "build": "NODE_ENV=development webpack --config dev.webpack.config.cjs",
+    "build-dist": "NODE_ENV=production webpack --config dist.webpack.config.cjs",
     "prebuild": "rm -rf build && mkdir ./build",
     "sass": "sass --no-source-map ./src/main/scss:./build/css",
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -27,6 +27,12 @@
   "devDependencies": {
     "@types/jquery": "^3.5.17",
     "bootstrap": "^5.3.1",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "sass": "^1.66.1",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
     "ts-loader": "^9.4.4",
     "typescript": "^5.2.2",
     "webpack": "^5.88.2",
