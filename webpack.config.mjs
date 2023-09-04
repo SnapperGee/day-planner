@@ -7,6 +7,7 @@ export default function(env, argv) {
     return {
         entry: [resolvePath('.', 'src', 'main', 'ts', 'script.ts'), resolvePath('.', 'src', 'main', 'scss', 'index.scss')],
         mode: env.production ? 'production' : 'development',
+        devtool: env.production ? 'source-map' : 'eval',
         module: {
         rules: [
             {
