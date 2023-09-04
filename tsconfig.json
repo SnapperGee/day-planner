@@ -2,6 +2,7 @@
     "include": ["./src/main/ts/**/*.ts"],
     "compilerOptions":
     {
+      "allowSyntheticDefaultImports": true,
       "declaration": false,
       "esModuleInterop": true,
       "forceConsistentCasingInFileNames": true,

@@ -9,8 +9,8 @@
     "url": "https://github.com/SnapperGee/day-planner.git"
   },
   "scripts": {
-    "build": "NODE_ENV=development webpack --config dev.webpack.config.cjs",
-    "build-dist": "NODE_ENV=production webpack --config dist.webpack.config.cjs",
+    "build": "NODE_ENV=development webpack --config ./config/dev.webpack.config.mjs",
+    "build-dist": "NODE_ENV=production webpack --config ./config/dist.webpack.config.mjs",
     "prebuild": "rm -rf build && mkdir ./build",
     "sass": "sass --no-source-map ./src/main/scss:./build/css",
     "test": "echo \"Error: no test specified\" && exit 1",
