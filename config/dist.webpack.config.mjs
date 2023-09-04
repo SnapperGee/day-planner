@@ -7,7 +7,7 @@ import MiniCssExtractPlugin from "mini-css-extract-plugin";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
 export default {
-    entry: [resolvePath('.', 'src', 'main', 'ts', 'script.ts'), resolvePath('.', 'src', 'main', 'scss', 'index.scss')],
+    entry: [resolvePath(__dirname, '..', 'src', 'main', 'ts', 'script.ts'), resolvePath(__dirname, '..', 'src', 'main', 'scss', 'index.scss')],
     module: {
     rules: [
         {
