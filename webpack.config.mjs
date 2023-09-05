@@ -37,6 +37,7 @@ export default function(env, argv) {
         output: {
             filename: env.production ? 'index.min.mjs' : 'index.mjs',
             path: resolvePath('.', 'build'),
+            clean: true
         },
         plugins: [
             new MiniCssExtractPlugin({ filename: "index.min.css" }),

@@ -10,9 +10,7 @@
   },
   "scripts": {
     "build": "webpack --config ./webpack.config.mjs",
-    "build-dist": "webpack --env production --config ./webpack.config.mjs",
-    "prebuild": "rm -rf build",
-    "prebuild-dist": "rm -rf build"
+    "build-dist": "webpack --env production --config ./webpack.config.mjs"
   },
   "keywords": [
     "schedule",
