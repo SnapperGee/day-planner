@@ -26,6 +26,13 @@ export default function(env, argv) {
                 }
             ],
         },
+        devServer: {
+            static: {
+                directory: resolvePath('.', 'build')
+            },
+            compress: true,
+            port: 9908
+        },
         resolve: { extensions: ['.tsx', '.ts', '.js'], },
         output: {
             filename: env.production ? 'index.min.mjs' : 'index.mjs',
