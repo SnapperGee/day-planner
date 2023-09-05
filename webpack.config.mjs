@@ -9,22 +9,22 @@ export default function(env, argv) {
         mode: env.production ? 'production' : 'development',
         devtool: env.production ? 'source-map' : 'eval-source-map',
         module: {
-        rules: [
-            {
-                test: /\.tsx?$/,
-                use: [
-                    {
-                        loader: 'ts-loader',
-                        options: { configFile: resolvePath('.', 'config', env.production ? 'tsconfig.dist.json' : 'tsconfig.dev.json') }
-                    }
-                ],
-                exclude: /node_modules/,
-            },
-            {
-                test: /\.s[a|c]ss$/,
-                use: [env.production ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
-            }
-        ],
+            rules: [
+                {
+                    test: /\.tsx?$/,
+                    use: [
+                        {
+                            loader: 'ts-loader',
+                            options: { configFile: resolvePath('.', 'config', env.production ? 'tsconfig.dist.json' : 'tsconfig.dev.json') }
+                        }
+                    ],
+                    exclude: /node_modules/,
+                },
+                {
+                    test: /\.s[a|c]ss$/,
+                    use: [env.production ? MiniCssExtractPlugin.loader : 'style-loader', 'css-loader', 'sass-loader']
+                }
+            ],
         },
         resolve: { extensions: ['.tsx', '.ts', '.js'], },
         output: {
