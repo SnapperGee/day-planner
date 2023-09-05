@@ -116,7 +116,17 @@ export class DayHourSlot
 
         this.#$saveButton.on("click", () =>
         {
-            localStorage.setItem(this.#id, this.#$textArea.val()?.toString() ?? "undefined");
+            const textAreaInput = this.#$textArea.val()!.toString();
+
+            if (textAreaInput.length === 0)
+            {
+                localStorage.removeItem(this.#id);
+            }
+            else
+            {
+                localStorage.setItem(this.#id, textAreaInput);
+            }
+
         });
 
         this.#$row = $("<div>").addClass(Array.from(hourSlotRowClasses))
