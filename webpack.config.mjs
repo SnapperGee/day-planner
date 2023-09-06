@@ -42,6 +42,7 @@ export default function(env, argv) {
         plugins: [
             new MiniCssExtractPlugin({ filename: "index.min.css" }),
             new HtmlWebpackPlugin({
+                scriptLoading: 'module',
                 template: resolvePath('.', 'src', 'main', 'html', 'index.html')
             }),
             new webpack.ProvidePlugin({ $: "jquery", jQuery: "jquery" })
