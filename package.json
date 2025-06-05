@@ -33,7 +33,7 @@
     "typescript": "^5.2.2",
     "webpack": "^5.93.0",
     "webpack-cli": "^5.1.4",
-    "webpack-dev-server": "^5.0.4"
+    "webpack-dev-server": "^5.2.1"
   },
   "dependencies": {
     "dayjs": "^1.11.9",
